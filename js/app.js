@@ -54,8 +54,17 @@ function playGame() {
 
     // Creo una matrice
     const matrix = createMatrix(rowNum, myGrid);
-    // matrix[x,y]
-    console.log(matrix[0][5]);
+    // console.log(matrix);
+
+    // matrix[x,y] es:
+    // console.log(matrix[0][5]);
+
+    for (let x = 0; x < matrix.length; x++) {
+        for (let y = 0; y < matrix.length; y++) {
+            matrix[x][y].addEventListener('click', clickHandler);
+            // console.log(matrix[x][y]);
+        }
+    }
 
 }
 
@@ -94,13 +103,14 @@ function getSquareElement() {
     const square = document.createElement('div');
     square.classList.add('square');
     // aggancia evento click
-    square.addEventListener('click', clickHandler);
+    // square.addEventListener('click', clickHandler);
     return square;
 }
 
 // funzione che gestisce il click
 function clickHandler() {
     const square = this;
+
     if (square.classList[1] == 'bomb') {
         statusImg.src = "img/sad.png"
         clearGame();
@@ -179,11 +189,12 @@ function insertBombs(bombs, grid) {
 // funzione che trasforma una griglia in una matrice
 function createMatrix(row, grid) {
     const matrixX = [];
+    let index = 0;
     for (let x = 0; x < row; x++) {
-        let index = 0;
         const matrixY = [];
         for (let y = 0; y < row; y++) {
             matrixY[y] = grid[index++];
+
         }
         matrixX.push(matrixY);
     }

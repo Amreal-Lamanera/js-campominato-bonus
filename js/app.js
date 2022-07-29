@@ -265,6 +265,7 @@ function addHandler(matrix) {
             // });
             // console.log(matrix[x][y]);
             matrix[x][y].addEventListener('click', clickHandler);
+            matrix[x][y].addEventListener('touchend', clickHandler);
         }
     }
 }
